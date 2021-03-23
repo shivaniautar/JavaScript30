@@ -43,7 +43,8 @@ function scrub(e) {
     const scrubTime = (e.offsetX / progress.offsetWidth) * video.duration;
     video.currentTime = scrubTime;
 }
-    //full screen
+
+//full screen
 // function changeScreenSize(){
 //     if(fullscreen){
 //         console.log('hi')
