@@ -94,6 +94,33 @@
   </div>
 
 <script>
+  //get all elements with class inbox and element type checkbox
+  const checkboxes = document.querySelectorAll('.inbox [type="checkbox"]');
+
+  let lastChecked;
+
+  //function to handle check
+  function handleCheck(e){
+    //check if they had the shift key down
+    //check that they are checking it
+    let inBetween = false; //"flag variable"
+    if(e.shiftKey && this.checked){
+      //loop through every checkbox and look for first one that was checked then check all until last one
+      //inBetween becomes true when it finds the first one checked 
+      checkboxes.forEach(checkbox =>{
+        if(checkbox == this || checkbox === lastChecked){
+          inBetween = !inBetween;
+        }
+        if(inBetween){
+          checkbox.checked = true;
+        }
+      })
+    }
+    lastChecked = this;
+  }
+  //now listen for when one gets clicked or changed
+  checkboxes.forEach(checkbox => checkbox.addEventListener('click', handleCheck));
+
 </script>
 </body>
 </html>
