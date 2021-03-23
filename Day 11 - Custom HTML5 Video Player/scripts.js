@@ -44,14 +44,14 @@ function scrub(e) {
     video.currentTime = scrubTime;
 }
     //full screen
-function changeScreenSize(){
-    if(fullscreen){
-        console.log('hi')
+// function changeScreenSize(){
+//     if(fullscreen){
+//         console.log('hi')
 
-    }else{
-        console.log('no')
-    }
-}
+//     }else{
+//         console.log('no')
+//     }
+// }
 
 
 
@@ -71,6 +71,6 @@ progress.addEventListener('click', scrub);
 progress.addEventListener('mousemove', (e) => mousedown && scrub(e));
 progress.addEventListener('mousedown', () => mousedown = true);
 progress.addEventListener('mouseup', () => mousedown = false);
-let fullscreen =false;
-fullScreen.addEventListener('click', (e) => fullscreen =true);
+// let fullscreen =false;
+// fullScreen.addEventListener('click', (e) => fullscreen =true);
 
