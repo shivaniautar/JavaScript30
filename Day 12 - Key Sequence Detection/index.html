@@ -7,6 +7,22 @@
 </head>
 <body>
 <script>
+  //array to hold the sequence
+  const pressed = [];
+  const secretCode = 'wesbos';
+
+  //adds event listener to the window for keys being pressed
+  window.addEventListener('keyup', (e)=>{
+    pressed.push(e.key);
+    //splice from back so that the sequence we check is always the amount of the secret code from the back 
+    pressed.splice(-secretCode.length-1,pressed.length - secretCode.length);
+    if(pressed.join('').includes(secretCode)){
+      console.log('DING DING!! YOU DID IT!')
+      cornify_add();//adds random things to screen
+    }
+    console.log(pressed)
+  });
+  // if you go on https://www.buzzfeed.com/ and do up,up, down, down, left, right, left, right, B, A Enter the secret code will unlock confetti
 </script>
 </body>
 </html>

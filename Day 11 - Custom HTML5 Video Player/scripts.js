@@ -45,8 +45,11 @@ function scrub(e) {
 }
 
 //full screen
-// function changeScreenSize(){
-//     fullScreen.classList.add('.fullscreen')
+function changeScreenSize(){
+    if(player.requestFullscreen){
+        player.requestFullscreen;
+    }
+    // fullScreen.classList.add('.fullscreen')
     // if(fullscreen){
     //     console.log('hi')
 
@@ -74,5 +77,5 @@ progress.addEventListener('mousemove', (e) => mousedown && scrub(e));
 progress.addEventListener('mousedown', () => mousedown = true);
 progress.addEventListener('mouseup', () => mousedown = false);
 // let fullscreen =false;
-// fullScreen.addEventListener('click', changeScreenSize);
+fullScreen.addEventListener('click', changeScreenSize);
 
