@@ -59,6 +59,26 @@
     /*Compass: https://thenounproject.com/search/?q=compass&i=592352*/
   </style>
   <script>
+    //get heading from geolocation
+    //get speed from geolocation
+    //can use ios simulator for this --> need MAC for this
+
+    //select arrow and speed value
+    const arrow = document.querySelector('.arrow');
+    const speed = document.querySelector('.speed-value');
+
+    navigator.geolocation.watchPosition((data)=>{
+      console.log(data);
+      //update speed from their geolocation info
+      speed.textContent = data.coords.speed;
+      //rotate number of degrees relative to north
+      arrow.style.transform = `rotate(${data.coords.heading}deg)`;
+    }, (err)=> {
+      console.err(err);
+      alert('HEY! YOU GOTTA ALLOW THAT TO HAPPEN!')
+    });
+
+
   </script>
 </body>
 </html>
