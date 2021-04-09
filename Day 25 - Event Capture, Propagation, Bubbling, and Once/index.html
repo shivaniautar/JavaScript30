@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Understanding JavaScript's Capture</title>
+</head>
+<body class="bod">
+
+  <div class="one">
+    <div class="two">
+      <div class="three">
+      </div>
+    </div>
+  </div>
+
+<style>
+  html {
+    box-sizing: border-box;
+  }
+  
+  *, *:before, *:after { 
+    box-sizing: inherit; 
+  }
+
+  div {
+    width: 100%;
+    padding: 100px;
+  }
+
+  .one {
+    background: thistle;
+  }
+
+  .two {
+    background: mistyrose;
+  }
+
+  .three {
+    background: coral;
+  }
+</style>
+
+<button></button>
+<script>
+    //nested divs
+    const divs = document.querySelectorAll('div');
+    const button = document.querySelector('button');
+
+    function logText(e) {
+        console.log(this.classList.value);
+        e.stopPropagation(); //stops bubbling = if we click on the inner coral box, it will not console log the 2nd and 1st classlist
+    }
+
+    divs.forEach(div=> div.addEventListener('click', logText, {
+        capture: false,
+        //if capture is true it runs the () on the down rather than on the way up - makes it run outside to inside rather than inside to out...if we click on the coral one we will get three,two,one on our console.
+        once:true //this will listen for a click once and then it would unbind itself  meaning it would remove the event listener after click
+    }));
+
+    button.addEventListener('click', ()=> {
+        console.log('Click!!!');
+    }, {
+        once:true //allows us to only click the button once!Can use this on checkout and unbind it once the user clicks checkout to prevent multiple orders
+    })
+
+
+
+</script>
+</body>
+</html>
